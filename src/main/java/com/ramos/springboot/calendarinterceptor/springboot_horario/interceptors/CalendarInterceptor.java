@@ -41,14 +41,14 @@ public class CalendarInterceptor implements HandlerInterceptor{
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> data = new HashMap<>();
+        Map<String, String> data = new HashMap<>();
         StringBuilder message = new StringBuilder("Cerrado, fuera de horario de atencion");
         message.append("Nuestra apertura es desde ");
         message.append(open);
         message.append(" hasta las ");
         message.append(close);
         data.put("message", message.toString());
-        data.put("date", new Date());
+        data.put("date", new Date().toString());
         response.setContentType("application/json");
         response.setStatus(401);
         response.getWriter().write(mapper.writeValueAsString(data));
